@@ -1,0 +1,35 @@
+.settings-pane, .timer-pane  {
+  box-shadow: 1px 2px 10px black;
+}
+
+.session-setting, .break-setting {
+  display: inline-block;
+  width: 35%;
+  margin-left: 7%;
+  margin-right: 7%; 
+}
+
+button {
+  background-color: inherit;
+  border: none;
+  text-shadow: 3px 3px 10px #7B0E13;
+}
+
+.control-buttons, .settings-pane p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duration {
+  font-family: Orbitron, monospace;
+  font-size: 2em;
+}
+
+.count-down {
+  font-size: 4em;
+}
+
+.timer-pane button {
+  text-shadow: 3px 3px 10px #7B0E13;
+}
