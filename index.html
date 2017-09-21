@@ -14,23 +14,40 @@
     <div class="settings-pane col m8 push-m2 red">
       <div class="session-setting">
         <h4 class="center">Session</h4>
-        <p><button><i class="fa fa-chevron-down fa-1x"></i></button><span class="duration">25</span><button><i class="fa fa-chevron-up fa-1x"></i></button></p>
+        <p>
+          <button id="session-down"><i class="fa fa-chevron-down fa-1x"></i></button>
+          <span id="session" class="duration">25</span>
+          <button id="session-up"><i class="fa fa-chevron-up fa-1x"></i></button>
+        </p>
       </div>
       <div class="break-setting">
         <h4 class="center">Break</h4>
-        <p><button><i class="fa fa-chevron-down fa-1x"></i></button><span class="duration">5</span><button><i class="fa fa-chevron-up fa-1x"></i></button></p>
+        <p>
+          <button id="break-down"><i class="fa fa-chevron-down fa-1x"></i></button>
+          <span id="break" class="duration">5</span>
+          <button id="break-up"><i class="fa fa-chevron-up fa-1x"></i></button>
+        </p>
       </div>
     </div>
   </section>
   <section class="row white-text">
     <div class="timer-pane col m8 push-m2 red">
       <h4 class="center">Session</h4>
-      <div class="control-buttons"><button><i class="fa fa-play fa-3x"></i></button><button><i class="fa fa-pause fa-3x"></i></button><button><i class="fa fa-stop fa-3x"></i></button><button><i class="fa fa-refresh fa-3x"></i></button></div>
-      <p class="duration count-down center">25:00</p>
+      <div class="control-buttons">
+        <button id="play"><i class="fa fa-play fa-3x"></i></button>
+        <button id="pause"><i class="fa fa-pause fa-3x"></i></button>
+        <button id="stop"><i class="fa fa-stop fa-3x"></i></button>
+        <button id="reset"><i class="fa fa-refresh fa-3x"></i></button>
+      </div>
+      <p id="display" class="duration count-down center">
+        <span class="minutes"></span>:
+        <span class="seconds"></span>
+      </p>
     </div> 
   </section>
 
   <script type="text/javascript" src="./js/jquery-3.1.1.js"></script>
   <script type="text/javascript" src="./js/materialize.js"></script>
+  <script type="text/javascript" src="./js/script.js"></script>
 </body>
 </html>
