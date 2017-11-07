@@ -14,7 +14,7 @@ function startCountdown(duration) {
   }
 
   updateCounter() 
-  let timeInterval = setInterval(updateCounter, 1000);
+  var timeInterval = setInterval(updateCounter, 1000);
 }
 
 function getRemainingTime(endtime) {
@@ -35,4 +35,32 @@ function getRemainingTime(endtime) {
   }
 }
 
-startCountdown(Date.now() + 1 * 30000);
+function oneDown (id) {
+  let counter = document.getElementById(id)
+  if (counter.textContent == 1) return
+  else counter.textContent--
+  if(id == 'session') {
+    let minute = document.getElementById('minute')
+    minute.textContent = ('0' + counter.textContent).slice(-2);
+  }
+}
+
+function oneUp (id) {
+  let counter = document.getElementById(id)
+  if (counter.textContent == 60)  return
+  else counter.textContent++  
+  if(id == 'session') {
+    let minute = document.getElementById('minute')
+    minute.textContent = counter.textContent;
+  }
+}
+
+const play = document.getElementById('play');
+play.addEventListener('click', () => startCountdown(Date.now() + minute.textContent * 60000
+));
+
+const durationUp = document.getElementById('session-up');
+const durationDown = document.getElementById('session-down');
+durationUp.addEventListener('click', () => oneUp('session'));
+durationDown.addEventListener('click', () => oneDown('session'));
+// startCountdown(Date.now() + 1 * 30000);
