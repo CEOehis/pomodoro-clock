@@ -75,10 +75,21 @@ function pauseTime() {
   if(duration) duration = timeLeft.total;
 }
 
-function resetPomodoro() {
+function stopPomodoro() {
   pauseTime()
   let sessionDiv = document.getElementById('session');
   minute.textContent = ('0' + sessionDiv.textContent).slice(-2);
+  second.innerHTML = '00';
+  timeInterval = void 0;
+  timeLeft = void 0;
+  duration = void 0;
+}
+
+function resetPomodoro() {
+  pauseTime()
+  let sessionDiv = document.getElementById('session');
+  sessionDiv.textContent = '25';
+  minute.textContent = '25';
   second.innerHTML = '00';
   timeInterval = void 0;
   timeLeft = void 0;
@@ -92,7 +103,10 @@ const pause = document.getElementById('pause');
 pause.addEventListener('click', pauseTime);
 
 const stop = document.getElementById('stop');
-stop.addEventListener('click', resetPomodoro);
+stop.addEventListener('click', stopPomodoro);
+
+const reset = document.getElementById('reset');
+reset.addEventListener('click', resetPomodoro);
 
 const durationUp = document.getElementById('session-up');
 const durationDown = document.getElementById('session-down');
