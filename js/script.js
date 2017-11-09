@@ -2,6 +2,19 @@
 let minute = document.getElementById('minute');
 let second = document.getElementById('second');
 let breakDiv = document.getElementById('break');
+
+const durationUp = document.getElementById('session-up');
+const durationDown = document.getElementById('session-down');
+const breakUp = document.getElementById('break-up');
+const breakDown = document.getElementById('break-down');
+
+const play = document.getElementById('play');
+const pause = document.getElementById('pause');
+const stop = document.getElementById('stop');
+const reset = document.getElementById('reset');
+
+let whichCountDown = document.getElementById('session-name');
+
 var timeInterval
 var timeLeft;
 var duration;
@@ -26,16 +39,17 @@ function startCountdown() {
 
   function nextCountdown() {
     if(isCountdownSession) {
+      whichCountDown.textContent = 'Break';
       duration = breakDiv.textContent * 60000;
       isCountdownSession = false;
     } else {   
+      whichCountDown.textContent = 'Session';
       isCountdownSession = true;
       stopPomodoro();
     }
     startCountdown()
   }
 
-  updateCounter() 
   timeInterval = setInterval(updateCounter, 1000);
 
   function getRemainingTime(endtime) {
@@ -118,22 +132,15 @@ function resetPomodoro() {
   duration = void 0;
 }
 
-const play = document.getElementById('play');
 play.addEventListener('click', startCountdown);
 
-const pause = document.getElementById('pause');
 pause.addEventListener('click', pauseTime);
 
-const stop = document.getElementById('stop');
 stop.addEventListener('click', stopPomodoro);
 
-const reset = document.getElementById('reset');
 reset.addEventListener('click', resetPomodoro);
 
-const durationUp = document.getElementById('session-up');
-const durationDown = document.getElementById('session-down');
-const breakUp = document.getElementById('break-up');
-const breakDown = document.getElementById('break-down');
+
 
 durationUp.addEventListener('click', () => oneUp('session'));
 durationDown.addEventListener('click', () => oneDown('session'));
