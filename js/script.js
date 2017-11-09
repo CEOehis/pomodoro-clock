@@ -9,16 +9,10 @@ var isCountdownSession = true;
 function startCountdown() {
   // disable other buttons
   disableButtons([play, durationUp, durationDown, breakUp, breakDown]);
-  if(duration) {
-    duration = duration;
-    duration = Date.now() + duration;
-  } else {
-    duration = minute.textContent * 60000;
-    duration = Date.now() + duration;
-  }
-  function updateCounter() {
-    // duration = duration ? duration : Date.now() + minute.textContent * 60000\
 
+  duration = duration ? duration : (minute.textContent * 60000);
+  duration = Date.now() + duration;
+  function updateCounter() {
     timeLeft = getRemainingTime(duration);
     minute.innerHTML = ('0' + timeLeft.minutes).slice(-2);
     second.innerHTML = ('0' + timeLeft.seconds).slice(-2);
