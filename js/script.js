@@ -7,6 +7,8 @@ var timeLeft;
 var duration;
 var isCountdownSession = true;
 function startCountdown() {
+  // disable other buttons
+  disableButtons([play, durationUp, durationDown, breakUp, breakDown]);
   if(duration) {
     duration = duration;
     duration = Date.now() + duration;
@@ -61,7 +63,17 @@ function startCountdown() {
   }
 }
 
+function disableButtons(arrayOfButtons) {
+  for(var i = 0 ; i < arrayOfButtons.length; i++) {
+    arrayOfButtons[i].disabled = true;
+  }
+}
 
+function enableButtons(arrayOfButtons) {
+  for(var i = 0 ; i < arrayOfButtons.length; i++) {
+    arrayOfButtons[i].disabled = false;
+  }
+}
 
 function oneDown (id) {
   let counter = document.getElementById(id)
@@ -85,11 +97,13 @@ function oneUp (id) {
 
 function pauseTime() {
   clearInterval(timeInterval);
+  enableButtons([play]);
   if(duration) duration = timeLeft.total;
 }
 
 function stopPomodoro() {
-  pauseTime()
+  pauseTime();
+  enableButtons([play, durationUp, durationDown, breakUp, breakDown]);
   let sessionDiv = document.getElementById('session');
   minute.textContent = ('0' + sessionDiv.textContent).slice(-2);
   second.innerHTML = '00';
@@ -100,6 +114,7 @@ function stopPomodoro() {
 
 function resetPomodoro() {
   pauseTime()
+  enableButtons([play, durationUp, durationDown, breakUp, breakDown]);
   let sessionDiv = document.getElementById('session');
   sessionDiv.textContent = '25';
   minute.textContent = '25';
